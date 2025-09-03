@@ -36,14 +36,14 @@ const Updateform=({ onUpdateAdded })=>{
         <input
           className="text"
           type="text"
-          placeholder="Enter location"
+          placeholder="Enter location eg, Thika road,survey"
           value={Location}
           onChange={(e) => setLocation(e.target.value)}
         />
         <input
           className="text"
           type="text"
-          placeholder="Enter cause of traffic"
+          placeholder="Enter cause of traffic eg accident, roadblock,stalled bus"
           value={cause}
           onChange={(e) => setCause(e.target.value)}
         />
