@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Updateform from './components/updateform';
+import Updatelist from './components/updatelist';
+import Navbar from './components/navbar';
+import Landing from './components/landing';
+import Footer from './components/footer';
+import {useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
+  const [reFreshKey, setReFreshKey]= useState(0);
+
+ const handleUpdateAdded = () => {
+    // re-fetch updates when new one is added
+    setReFreshKey((prev) => prev + 1);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <Navbar/>
+      <Landing/>
+      <Routes>
+        <Route path="/update" element={<Updateform onUpdateAdded={handleUpdateAdded}/>} />
+      </Routes>
+      <Updatelist updates={reFreshKey}/>
+      </Router>
+      <Footer/>
     </div>
   );
-}
-
+};
 export default App;
